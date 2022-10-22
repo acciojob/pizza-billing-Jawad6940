@@ -3,36 +3,35 @@ package com.driver;
 public class Pizza {
 
     private int price;
+    private  int cheesePrice;
+    private  int toppingPrice;
+    private  int take;
 
     private final Boolean isVeg;
 
-    private boolean isCheeseaAdd;
+    private boolean isCheeseAdd;
     private boolean isBillGenerated;
     private boolean isTakeAdd;
-    private final int cheeseaPrice;
-    private final int toppingPrice;
+
     private boolean isToppingAdd;
-    private final int take;
+
     private String bill;
 
 
     public Pizza(Boolean isVeg) {
         this.isVeg = isVeg;
-        this.isCheeseaAdd = false;
+        this.price=this.isVeg?300:400;
+        this.toppingPrice=this.isVeg?70:120;
+        this.cheesePrice = 80;
+        this.take = 20;
+
+        this.isCheeseAdd = false;
         this.isToppingAdd = false;
         this.isTakeAdd = false;
         this.isBillGenerated = false;
-        this.cheeseaPrice = 80;
-        this.take = 20;
-        if (isVeg) {
-            this.price = 300;
-            this.toppingPrice = 70;
-            bill = "Base Price Of The Pizza: " + 300 + "\n";
-        } else {
-            this.price = 400;
-            this.toppingPrice = 120;
-            bill = "Base Price Of The Pizza: " + 400 + "\n";
-        }
+
+        this.bill="Base Price Of The Pizza: "+this.price+"\n";
+
         // your code goes here
     }
 
@@ -43,9 +42,9 @@ public class Pizza {
 
     public void addExtraCheese() {
 
-        if (!isCheeseaAdd) {
-            this.price += this.cheeseaPrice;
-            isCheeseaAdd = true;
+        if (!this.isCheeseAdd) {
+            this.price += this.cheesePrice;
+            isCheeseAdd = true;
 
         }
         // your code goes here
@@ -70,9 +69,9 @@ public class Pizza {
     }
 
     public String getBill() {
-        if (!isBillGenerated) {
-            if (this.isCheeseaAdd) {
-                this.bill += "Extra Cheese Added: " + this.cheeseaPrice + "\n";
+        if (this.isBillGenerated==false) {
+            if (this.isCheeseAdd) {
+                this.bill += "Extra Cheese Added: " + this.cheesePrice + "\n";
             }
             if (this.isToppingAdd) {
                 this.bill += "Extra Toppings Added: " + this.toppingPrice + "\n";
